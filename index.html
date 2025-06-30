@@ -236,12 +236,9 @@
                         <h3 class="text-4xl lg:text-5xl font-bebas text-[var(--neon-lime)]">COPACABANA 3° Edição (OPEN BAR)</h3>
                         <p class="text-xl text-gray-300 mt-2"><i class="fas fa-calendar-alt mr-2 text-[var(--neon-cyan)]"></i>Sábado, 12 de Julho de 2025</p>
                         <p class="text-xl text-gray-300 mt-1"><i class="fas fa-map-marker-alt mr-2 text-[var(--neon-cyan)]"></i>Galpão Central, Rua das Luzes, 123</p>
-                        <div id="countdown" class="text-4xl font-bebas my-8 flex space-x-4 justify-start">
-                            <div><span id="days" class="text-[var(--neon-lime)]">00</span><span class="block text-sm">Dias</span></div>
-                            <div><span id="hours" class="text-[var(--neon-lime)]">00</span><span class="block text-sm">Horas</span></div>
-                            <div><span id="minutes" class="text-[var(--neon-lime)]">00</span><span class="block text-sm">Minutos</span></div>
-                            <div><span id="seconds" class="text-[var(--neon-lime)]">00</span><span class="block text-sm">Segundos</span></div>
-                        </div>
+                        <div id="countdown-container" class="text-4xl font-bebas my-8 text-left">
+    <p id="countdown-text" class="text-[var(--neon-lime)]"></p>
+</div>
                         <a href="https://cheers.com.br/evento/copacabana-open-bar-24290" target="_blank" class="inline-block bg-[var(--neon-lime)] text-black font-bold py-4 px-10 rounded-lg text-xl font-bebas tracking-wider transition-all duration-300 hover:bg-white hover:neon-shadow-cyan">
                             GARANTA SEU INGRESSO
                         </a>
@@ -394,10 +391,35 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        const countdownDate = new Date("Jul 12, 2025 16:00:00").getTime();
-        const countdownFunction = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
+        // --- Lógica do Contador Simplificado ---
+const dataDoEvento = new Date("Jul 12, 2025 00:00:00"); // <-- MUDE A DATA AQUI
+
+function atualizarContador() {
+    const hoje = new Date();
+    // Zera as horas para comparar apenas os dias
+    hoje.setHours(0, 0, 0, 0);
+    dataDoEvento.setHours(0, 0, 0, 0);
+
+    const diffTime = dataDoEvento.getTime() - hoje.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    const countdownTextElement = document.getElementById('countdown-text');
+
+    if (countdownTextElement) {
+        if (diffDays > 1) {
+            countdownTextElement.innerText = `Faltam ${diffDays} dias`;
+        } else if (diffDays === 1) {
+            countdownTextElement.innerText = `Falta 1 dia`;
+        } else if (diffDays === 0) {
+            countdownTextElement.innerText = 'Evento Hoje!';
+        } else {
+            countdownTextElement.innerText = 'Evento Iniciado!';
+        }
+    }
+}
+
+// Roda a função para mostrar o estado inicial
+atualizarContador();
             
             if (document.getElementById('days')) {
                 document.getElementById('days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
