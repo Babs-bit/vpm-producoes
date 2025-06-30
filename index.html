@@ -75,28 +75,22 @@
             position: absolute;
             left: 50%;
             top: 50%;
-            width: 500px;
-            height: 500px;
+            width: 300px;
+            height: 300px;
             background: radial-gradient(circle, #ffd700, #ff8c00, var(--neon-pink), transparent 60%);
             border-radius: 50%;
             animation: beat-pulse 1.2s infinite ease-in-out;
         }
+        @media (min-width: 768px) {
+            .glowing-sun {
+                width: 500px;
+                height: 500px;
+            }
+        }
         @keyframes beat-pulse {
-            0% {
-                transform: translate(-50%, -60%) scale(1);
-                opacity: 0.9;
-                filter: blur(20px);
-            }
-            50% {
-                transform: translate(-50%, -60%) scale(1.1);
-                opacity: 1;
-                filter: blur(30px);
-            }
-            100% {
-                transform: translate(-50%, -60%) scale(1);
-                opacity: 0.9;
-                filter: blur(20px);
-            }
+            0% { transform: translate(-50%, -60%) scale(1); opacity: 0.9; filter: blur(20px); }
+            50% { transform: translate(-50%, -60%) scale(1.1); opacity: 1; filter: blur(30px); }
+            100% { transform: translate(-50%, -60%) scale(1); opacity: 0.9; filter: blur(20px); }
         }
         .city-silhouette {
             width: 100%;
@@ -125,7 +119,6 @@
             to { background-position: 0 120px; }
         }
         .hero-title {
-            font-size: 6rem; /* Tailwind text-9xl */
             font-family: 'Bebas Neue', sans-serif;
             letter-spacing: 0.1em;
             color: #fff;
@@ -133,12 +126,8 @@
             animation: title-flicker 4s infinite alternate;
         }
         @keyframes title-flicker {
-            0%, 18%, 22%, 25%, 53%, 57%, 100% {
-                text-shadow: 0 0 10px #fff, 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink);
-            }
-            20%, 24%, 55% {
-                text-shadow: none;
-            }
+            0%, 18%, 22%, 25%, 53%, 57%, 100% { text-shadow: 0 0 10px #fff, 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink); }
+            20%, 24%, 55% { text-shadow: none; }
         }
 
         /* Cyberpunk Button */
@@ -163,6 +152,17 @@
             clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
             border: 1px solid var(--dark-purple);
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .cyber-card .p-6 {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .cyber-card .mt-4 {
+            margin-top: auto;
         }
         .cyber-card:hover {
             transform: translateY(-5px);
@@ -186,8 +186,8 @@
 
     <!-- Header -->
     <header id="header" class="bg-black/50 backdrop-blur-sm sticky top-0 z-50 transition-all duration-300 border-b border-gray-800/50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-3xl font-bebas tracking-wider rainbow-text">VPM PRODUÇÕES</a>
+        <nav class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl sm:text-3xl font-bebas tracking-wider rainbow-text">VPM PRODUÇÕES</a>
             <div class="hidden md:flex items-center space-x-8">
                 <a href="#eventos" class="hover:text-[var(--neon-cyan)] transition-colors duration-300">Eventos</a>
                 <a href="#galeria" class="hover:text-[var(--neon-cyan)] transition-colors duration-300">Galeria</a>
@@ -216,8 +216,8 @@
                 <div class="city-silhouette"></div>
             </div>
             <div class="relative z-10 px-4 text-center">
-                <h1 class="hero-title">VPM PRODUÇÕES</h1>
-                <p class="text-2xl md:text-3xl font-bebas neon-text-cyan mt-4 tracking-wider">Aqui você pode ser quem você quiser</p>
+                <h1 class="hero-title text-5xl sm:text-7xl lg:text-9xl">VPM PRODUÇÕES</h1>
+                <p class="text-xl sm:text-2xl md:text-3xl font-bebas neon-text-cyan mt-4 tracking-wider">Aqui você pode ser quem você quiser</p>
                 <a href="#eventos" class="mt-8 inline-block font-bold py-3 px-8 text-lg font-bebas tracking-wider cyber-btn">
                     // CONHEÇA NOSSOS EVENTOS
                 </a>
@@ -225,20 +225,20 @@
         </section>
 
         <!-- Próximo Evento Section -->
-        <section id="proximo-evento" class="py-20 bg-black section">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-5xl font-bebas rainbow-text mb-4">Próximo Fervo</h2>
-                <p class="text-lg text-gray-400 mb-12">Prepare-se para o próximo evento que vai dar o nome!</p>
-                <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 bg-[var(--dark-gray)] p-8 rounded-2xl border-2 border-[var(--dark-purple)]" style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%);">
-                    <img src="https://github.com/Babs-bit/vpm-producoes/blob/main/copacabana.png?raw=true" alt="Flyer do Evento" class="w-full max-w-sm rounded-lg shadow-lg neon-shadow-pink">
-                    <div class="text-left">
-                        <h3 class="text-4xl lg:text-5xl font-bebas text-[var(--neon-lime)]">COPACABANA 3° Edição (OPEN BAR)</h3>
-                        <p class="text-xl text-gray-300 mt-2"><i class="fas fa-calendar-alt mr-2 text-[var(--neon-cyan)]"></i>Sábado, 12 de Julho de 2025</p>
-                        <p class="text-xl text-gray-300 mt-1"><i class="fas fa-map-marker-alt mr-2 text-[var(--neon-cyan)]"></i>Espaço Royalle, Rua Manoel Raimundo Amaral, 43</p>
-                        <div id="countdown-container" class="text-4xl font-bebas my-8 text-left">
+        <section id="proximo-evento" class="py-16 sm:py-20 bg-black section">
+            <div class="container mx-auto px-4 sm:px-6 text-center">
+                <h2 class="text-4xl sm:text-5xl font-bebas rainbow-text mb-4">Próximo Fervo</h2>
+                <p class="text-base sm:text-lg text-gray-400 mb-12">Prepare-se para o próximo evento que vai dar o nome!</p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 bg-[var(--dark-gray)] p-6 sm:p-8 rounded-2xl border-2 border-[var(--dark-purple)]" style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);">
+                    <img src="https://github.com/Babs-bit/vpm-producoes/blob/main/copacabana.png?raw=true" alt="Flyer do Evento" class="w-full max-w-xs sm:max-w-sm rounded-lg shadow-lg neon-shadow-pink">
+                    <div class="text-center md:text-left">
+                        <h3 class="text-3xl sm:text-4xl lg:text-5xl font-bebas text-[var(--neon-lime)]">COPACABANA 3° Edição (OPEN BAR)</h3>
+                        <p class="text-lg sm:text-xl text-gray-300 mt-2"><i class="fas fa-calendar-alt mr-2 text-[var(--neon-cyan)]"></i>Sábado, 12 de Julho de 2025</p>
+                        <p class="text-lg sm:text-xl text-gray-300 mt-1"><i class="fas fa-map-marker-alt mr-2 text-[var(--neon-cyan)]"></i>Espaço Royalle, Rua Manoel Raimundo Amaral, 43</p>
+                        <div id="countdown-container" class="text-3xl sm:text-4xl font-bebas my-6 sm:my-8">
                             <p id="countdown-text" class="text-[var(--neon-lime)]"></p>
                         </div>
-                        <a href="https://cheers.com.br/evento/copacabana-open-bar-24290" target="_blank" class="inline-block bg-[var(--neon-lime)] text-black font-bold py-4 px-10 rounded-lg text-xl font-bebas tracking-wider transition-all duration-300 hover:bg-white hover:neon-shadow-cyan">
+                        <a href="https://cheers.com.br/evento/copacabana-open-bar-24290" target="_blank" class="inline-block bg-[var(--neon-lime)] text-black font-bold py-3 px-8 sm:py-4 sm:px-10 rounded-lg text-lg sm:text-xl font-bebas tracking-wider transition-all duration-300 hover:bg-white hover:neon-shadow-cyan">
                             GARANTA SEU INGRESSO
                         </a>
                     </div>
@@ -247,32 +247,33 @@
         </section>
 
         <!-- Eventos Section -->
-        <section id="eventos" class="py-20 bg-deep-blue section">
-            <div class="container mx-auto px-6">
-                <h2 class="text-5xl font-bebas rainbow-text text-center mb-12">Calendário Oficial</h2>
+        <section id="eventos" class="py-16 sm:py-20 bg-deep-blue section">
+            <div class="container mx-auto px-4 sm:px-6">
+                <h2 class="text-4xl sm:text-5xl font-bebas rainbow-text text-center mb-12">Calendário Oficial</h2>
                 <div class="flex justify-center mb-8 border-b-2 border-[var(--dark-gray)]">
-                    <button class="tab-btn active font-bebas text-2xl px-8 py-2 text-[var(--neon-pink)] border-b-2 border-[var(--neon-pink)]" data-tab="proximos">Próximos</button>
-                    <button class="tab-btn font-bebas text-2xl px-8 py-2 text-gray-500" data-tab="passados">Passados</button>
+                    <button class="tab-btn active font-bebas text-xl sm:text-2xl px-6 sm:px-8 py-2 text-[var(--neon-pink)] border-b-2 border-[var(--neon-pink)]" data-tab="proximos">Próximos</button>
+                    <button class="tab-btn font-bebas text-xl sm:text-2xl px-6 sm:px-8 py-2 text-gray-500" data-tab="passados">Passados</button>
                 </div>
                 
                 <div id="proximos" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                   <div class="cyber-card overflow-hidden">
-    <img src="https://github.com/Babs-bit/vpm-producoes/blob/main/copacabana.png?raw=true" alt="Flyer da festa Copacabana" class="w-full h-48 object-cover">
-    <div class="p-6">
-        <h3 class="text-2xl font-bebas text-[var(--neon-cyan)]">COPACABANA 3° Edição</h3>
-        <p class="text-gray-400"><i class="fas fa-calendar-alt mr-2"></i> 12 de Julho</p>
-        <p class="text-gray-400"><i class="fas fa-map-marker-alt mr-2"></i> Galpão Central</p>
-        <a href="https://cheers.com.br/evento/copacabana-open-bar-24290" target="_blank" class="mt-4 inline-block w-full text-center bg-[var(--neon-cyan)] text-black font-bold py-2 px-4 rounded-md font-bebas tracking-wider hover:bg-white transition-colors">Comprar Ingresso</a>
-    </div>
-</div>
+                    <!-- Card 1: Copacabana -->
+                    <div class="cyber-card overflow-hidden">
+                        <img src="https://github.com/Babs-bit/vpm-producoes/blob/main/copacabana.png?raw=true" alt="Flyer da festa Copacabana" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bebas text-[var(--neon-cyan)]">COPACABANA 3° Edição</h3>
+                            <p class="text-gray-400"><i class="fas fa-calendar-alt mr-2"></i> 12 de Julho</p>
+                            <p class="text-gray-400"><i class="fas fa-map-marker-alt mr-2"></i> Galpão Central</p>
+                            <a href="https://cheers.com.br/evento/copacabana-open-bar-24290" target="_blank" class="mt-4 inline-block w-full text-center bg-[var(--neon-cyan)] text-black font-bold py-2 px-4 rounded-md font-bebas tracking-wider hover:bg-white transition-colors">Comprar Ingresso</a>
+                        </div>
                     </div>
+                    <!-- Card 2: Em Breve -->
                     <div class="cyber-card overflow-hidden">
                         <img src="https://placehold.co/600x400/1a1a1a/dfff00?text=EM+BREVE" alt="EM BREVE" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="text-2xl font-bebas text-[var(--neon-lime)]">Em Construção</h3>
-                            <p class="text-gray-400"><i class="fas fa-calendar-alt mr-2"></i> A definir</p>
-                            <p class="text-gray-400"><i class="fas fa-map-marker-alt mr-2"></i> A definir</p>
-                            <a href="#" class="mt-4 inline-block w-full text-center bg-[var(--neon-lime)] text-black font-bold py-2 px-4 rounded-md font-bebas tracking-wider hover:bg-white transition-colors">Comprar Ingresso</a>
+                            <h3 class="text-2xl font-bebas text-[var(--neon-lime)]">Aguarde...</h3>
+                            <p class="text-gray-400"><i class="fas fa-calendar-alt mr-2"></i> Data a definir</p>
+                            <p class="text-gray-400"><i class="fas fa-map-marker-alt mr-2"></i> Local a definir</p>
+                            <a href="#" class="mt-4 inline-block w-full text-center bg-gray-600 text-gray-400 font-bold py-2 px-4 rounded-md font-bebas tracking-wider cursor-not-allowed">Aguarde</a>
                         </div>
                     </div>
                 </div>
@@ -281,8 +282,8 @@
                      <div class="cyber-card overflow-hidden opacity-70">
                         <img src="https://github.com/Babs-bit/vpm-producoes/blob/main/copacabana.png?raw=true" alt="Copacabana" class="w-full h-48 object-cover">
                         <div class="p-6">
-                            <h3 class="text-2xl font-bebas text-gray-400">Copacana 3° Edição</h3>
-                            <p class="text-gray-500"><i class="fas fa-calendar-alt mr-2"></i> 12 de Julho de 2025</p>
+                            <h3 class="text-2xl font-bebas text-gray-400">Copacabana 2° Edição</h3>
+                            <p class="text-gray-500"><i class="fas fa-calendar-alt mr-2"></i> 19 de Julho de 2024</p>
                             <a href="#galeria" class="mt-4 inline-block w-full text-center bg-gray-700 text-white font-bold py-2 px-4 rounded-md font-bebas tracking-wider hover:bg-gray-600 transition-colors">VER GALERIA</a>
                         </div>
                     </div>
@@ -291,10 +292,10 @@
         </section>
         
         <!-- Galeria Section -->
-        <section id="galeria" class="py-20 bg-black section">
-            <div class="container mx-auto px-6">
-                <h2 class="text-5xl font-bebas rainbow-text text-center mb-4">Onde as Memórias Brilham</h2>
-                <p class="text-lg text-gray-400 text-center mb-12">Confira os cliques dos últimos eventos que deram o nome.</p>
+        <section id="galeria" class="py-16 sm:py-20 bg-black section">
+            <div class="container mx-auto px-4 sm:px-6">
+                <h2 class="text-4xl sm:text-5xl font-bebas rainbow-text text-center mb-4">Onde as Memórias Brilham</h2>
+                <p class="text-base sm:text-lg text-gray-400 text-center mb-12">Confira os cliques dos últimos eventos que deram o nome.</p>
                 
                 <div class="text-center mb-8">
                     <select id="gallery-filter" class="bg-black border-2 border-[var(--neon-cyan)] rounded-lg px-4 py-2 text-white focus:outline-none">
@@ -304,20 +305,20 @@
                     </select>
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="grid gap-4">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4">
+                    <div class="grid gap-2 sm:gap-4">
                         <div data-event="prisma"><img class="h-auto max-w-full rounded-lg transition-all duration-300 hover:scale-105 hover:neon-shadow-pink cursor-pointer" src="https://placehold.co/500x700/000000/ff00e6?text=VPM" alt="Foto da festa" onclick="openLightbox(this.src)"></div>
                         <div data-event="cores"><img class="h-auto max-w-full rounded-lg transition-all duration-300 hover:scale-105 hover:neon-shadow-pink cursor-pointer" src="https://placehold.co/500x600/000000/ff00e6?text=VPM" alt="Foto da festa" onclick="openLightbox(this.src)"></div>
                     </div>
-                    <div class="grid gap-4">
+                    <div class="grid gap-2 sm:gap-4">
                         <div data-event="cores"><img class="h-auto max-w-full rounded-lg transition-all duration-300 hover:scale-105 hover:neon-shadow-cyan cursor-pointer" src="https://placehold.co/500x500/000000/00f2ff?text=VPM" alt="Foto da festa" onclick="openLightbox(this.src)"></div>
                         <div data-event="prisma"><img class="h-auto max-w-full rounded-lg transition-all duration-300 hover:scale-105 hover:neon-shadow-cyan cursor-pointer" src="https://placehold.co/500x800/000000/dfff00?text=VPM" alt="Foto da festa" onclick="openLightbox(this.src)"></div>
                     </div>
-                    <div class="grid gap-4">
+                    <div class="grid gap-2 sm:gap-4">
                         <div data-event="prisma"><img class="h-auto max-w-full rounded-lg transition-all duration-300 hover:scale-105 hover:neon-shadow-lime cursor-pointer" src="https://placehold.co/500x550/000000/00f2ff?text=VPM" alt="Foto da festa" onclick="openLightbox(this.src)"></div>
                         <div data-event="cores"><img class="h-auto max-w-full rounded-lg transition-all duration-300 hover:scale-105 hover:neon-shadow-lime cursor-pointer" src="https://placehold.co/500x750/000000/dfff00?text=VPM" alt="Foto da festa" onclick="openLightbox(this.src)"></div>
                     </div>
-                     <div class="grid gap-4">
+                     <div class="grid gap-2 sm:gap-4">
                         <div data-event="cores"><img class="h-auto max-w-full rounded-lg transition-all duration-300 hover:scale-105 hover:neon-shadow-pink cursor-pointer" src="https://placehold.co/500x850/000000/dfff00?text=VPM" alt="Foto da festa" onclick="openLightbox(this.src)"></div>
                         <div data-event="prisma"><img class="h-auto max-w-full rounded-lg transition-all duration-300 hover:scale-105 hover:neon-shadow-pink cursor-pointer" src="https://placehold.co/500x450/000000/ff00e6?text=VPM" alt="Foto da festa" onclick="openLightbox(this.src)"></div>
                     </div>
@@ -326,10 +327,10 @@
         </section>
 
         <!-- Sobre Nós Section -->
-        <section id="sobre" class="py-20 bg-deep-blue section">
-            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+        <section id="sobre" class="py-16 sm:py-20 bg-deep-blue section">
+            <div class="container mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center gap-8 md:gap-12">
                 <div class="md:w-1/2">
-                    <h2 class="text-5xl font-bebas rainbow-text mb-4">Nossa Missão</h2>
+                    <h2 class="text-4xl sm:text-5xl font-bebas rainbow-text mb-4">Nossa Missão</h2>
                     <p class="text-gray-300 leading-relaxed mb-4">A VPM Produções nasceu do desejo de criar mais do que festas: criamos universos. Nosso objetivo é construir espaços seguros, diversos e inesquecíveis, onde a celebração e a música se encontram.</p>
                     <p class="text-gray-300 leading-relaxed">Acreditamos que a festa é melhor quando todos se sentem bem-vindos. Celebramos cada cor, cada identidade, cada história.</p>
                 </div>
@@ -340,10 +341,10 @@
         </section>
 
         <!-- Contato Section -->
-        <section id="contato" class="py-20 bg-black section">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-5xl font-bebas rainbow-text mb-4">Fale com a Gente</h2>
-                <p class="text-lg text-gray-400 mb-12">Tem uma ideia, dúvida ou quer fazer um som com a gente? Manda a real!</p>
+        <section id="contato" class="py-16 sm:py-20 bg-black section">
+            <div class="container mx-auto px-4 sm:px-6 text-center">
+                <h2 class="text-4xl sm:text-5xl font-bebas rainbow-text mb-4">Fale com a Gente</h2>
+                <p class="text-base sm:text-lg text-gray-400 mb-12">Tem uma ideia, dúvida ou quer fazer um som com a gente? Manda a real!</p>
                 <div class="max-w-xl mx-auto">
                     <form action="#" method="POST" class="space-y-6">
                         <input type="text" placeholder="Seu nome" class="w-full bg-black border-2 border-[var(--dark-gray)] rounded-lg p-3 focus:border-[var(--neon-pink)] focus:outline-none transition-colors">
@@ -366,7 +367,7 @@
 
     <!-- Footer -->
     <footer class="bg-black py-8 border-t border-gray-800/50">
-        <div class="container mx-auto px-6 text-center text-gray-500">
+        <div class="container mx-auto px-4 sm:px-6 text-center text-gray-500">
             <p>&copy; 2025 VPM Produções. Todos os direitos reservados.</p>
             <p class="text-sm">Feito com <i class="fas fa-heart text-[var(--neon-pink)]"></i></p>
         </div>
@@ -446,10 +447,11 @@
             galleryFilter.addEventListener('change', (e) => {
                 const selectedEvent = e.target.value;
                 galleryItems.forEach(item => {
+                    const parent = item.closest('.grid.gap-2') || item.closest('.grid.gap-4');
                     if (selectedEvent === 'all' || item.dataset.event === selectedEvent) {
-                        item.style.display = 'block';
+                       item.style.display = 'block';
                     } else {
-                        item.style.display = 'none';
+                       item.style.display = 'none';
                     }
                 });
             });
